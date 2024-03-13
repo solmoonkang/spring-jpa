@@ -35,6 +35,16 @@ public class JpaMain {
             // 참조를 사용해서 연관관계를 조회
             Team findTeam = findTeamMember.getTeam();
 
+
+
+            // SAVE NEW TEAM B
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            entityManager.persist(teamB);
+
+            // "memberA"에 새로운 teamB 설정
+            teamMember.setTeam(teamB);
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
