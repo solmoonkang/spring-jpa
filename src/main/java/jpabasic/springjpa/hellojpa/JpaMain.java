@@ -22,7 +22,8 @@ public class JpaMain {
             // SAVE MEMBER
             TeamMember teamMember = new TeamMember();
             teamMember.setName("memberA");
-            teamMember.setTeamId(team.getId());
+            // 단방향 연관관계 설정, 참조 저장
+            teamMember.setTeam(team);
             entityManager.persist(teamMember);
 
             // FIND MEMBER
