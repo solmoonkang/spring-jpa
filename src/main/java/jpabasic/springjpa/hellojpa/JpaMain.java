@@ -25,6 +25,12 @@ public class JpaMain {
             teamMember.setTeamId(team.getId());
             entityManager.persist(teamMember);
 
+            // FIND MEMBER
+            TeamMember findTeamMember = entityManager.find(TeamMember.class, teamMember.getId());
+
+            // 연관관계가 없다.
+            Team findTeam = entityManager.find(Team.class, team.getId());
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
