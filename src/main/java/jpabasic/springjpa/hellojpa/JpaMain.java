@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -15,20 +14,16 @@ public class JpaMain {
         transaction.begin();
 
         try {
-            // CREATE MEMEBER
-            Test createTest = new Test();
-            createTest.setUsername("newMember");
+            // SAVE TEAM
+            Team team = new Team();
+            team.setName("teamA");
+            entityManager.persist(team);
 
-            entityManager.persist(createTest);
-
-
-            // FIND ALL MEMBER
-            List<Test> findTest = entityManager.createQuery("select m from Test as m", Test.class)
-                            .getResultList();
-
-            for (Test test : findTest) {
-                System.out.println("test.username = " + test.getUsername());
-            }
+            // SAVE MEMBER
+            TeamMember teamMember = new TeamMember();
+            teamMember.setName("memberA");
+            teamMember.setTeamId(team.getId());
+            entityManager.persist(teamMember);
 
             transaction.commit();
         } catch (Exception e) {
