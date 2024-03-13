@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -35,6 +36,10 @@ public class JpaMain {
             // 참조를 사용해서 연관관계를 조회
             Team findTeam = findTeamMember.getTeam();
 
+            entityManager.flush();
+            entityManager.clear();
+
+
 
 
             // SAVE NEW TEAM B
@@ -44,6 +49,19 @@ public class JpaMain {
 
             // "memberA"에 새로운 teamB 설정
             teamMember.setTeam(teamB);
+
+            entityManager.flush();
+            entityManager.clear();
+
+
+
+
+            TeamMember findTeamMemberB = entityManager.find(TeamMember.class, teamMember.getId());
+            List<TeamMember> teamMembers = findTeamMemberB.getTeam().getTeamMembers();
+
+            for (TeamMember member : teamMembers) {
+                System.out.println("member = " + member.getName());
+            }
 
             transaction.commit();
         } catch (Exception e) {
