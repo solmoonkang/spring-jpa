@@ -3,7 +3,6 @@ package jpabasic.springjpa.hellojpa;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
 public class Test {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
