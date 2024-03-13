@@ -15,11 +15,19 @@ public class JpaMain {
         transaction.begin();
 
         try {
-            List<Member> findMember = entityManager.createQuery("select m from Member as m", Member.class)
+            // CREATE MEMEBER
+            Test createTest = new Test();
+            createTest.setUsername("newMember");
+
+            entityManager.persist(createTest);
+
+
+            // FIND ALL MEMBER
+            List<Test> findTest = entityManager.createQuery("select m from Test as m", Test.class)
                             .getResultList();
 
-            for (Member member : findMember) {
-                System.out.println("member.name = " + member.getName());
+            for (Test test : findTest) {
+                System.out.println("test.username = " + test.getUsername());
             }
 
             transaction.commit();
