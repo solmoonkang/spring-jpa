@@ -30,7 +30,10 @@ public class JpaMain {
             TeamMember findTeamMember = entityManager.find(TeamMember.class, teamMember.getId());
 
             // 연관관계가 없다.
-            Team findTeam = entityManager.find(Team.class, team.getId());
+            // Team findTeam = entityManager.find(Team.class, team.getId());
+
+            // 참조를 사용해서 연관관계를 조회
+            Team findTeam = findTeamMember.getTeam();
 
             transaction.commit();
         } catch (Exception e) {
