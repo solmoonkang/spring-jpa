@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Member {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
