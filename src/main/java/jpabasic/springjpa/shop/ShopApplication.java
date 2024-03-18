@@ -1,5 +1,7 @@
 package jpabasic.springjpa.shop;
 
+import jpabasic.springjpa.shop.domain.item.Book;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,6 +16,14 @@ public class ShopApplication {
         transaction.begin();
 
         try {
+
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+
+            entityManager.persist(book);
+
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
