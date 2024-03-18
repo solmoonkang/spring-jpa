@@ -63,6 +63,27 @@ public class JpaMain {
                 System.out.println("member = " + member.getName());
             }
 
+            entityManager.flush();
+            entityManager.clear();
+
+
+
+
+
+            Movie movie = new Movie();
+            movie.setDirector("DIRECTOR");
+            movie.setActor("ACTOR");
+            movie.setName("MOVIE NAME");
+            movie.setPrice(10000);
+
+            entityManager.persist(movie);
+
+            entityManager.flush();
+            entityManager.clear();
+
+            Movie findMovie = entityManager.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
