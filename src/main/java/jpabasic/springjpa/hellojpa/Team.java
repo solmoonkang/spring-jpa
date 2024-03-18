@@ -1,5 +1,8 @@
 package jpabasic.springjpa.hellojpa;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Team {
+@Getter @Setter
+public class Team extends BaseEntity {
 
     @Id @GeneratedValue
     private Long id;
@@ -17,28 +21,4 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     List<TeamMember> teamMembers = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<TeamMember> getTeamMembers() {
-        return teamMembers;
-    }
-
-    public void setTeamMembers(List<TeamMember> teamMembers) {
-        this.teamMembers = teamMembers;
-    }
 }
