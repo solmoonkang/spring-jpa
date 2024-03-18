@@ -1,11 +1,12 @@
 package jpabasic.springjpa.shop.domain.delivery;
 
+import jpabasic.springjpa.shop.domain.BaseEntity;
 import jpabasic.springjpa.shop.domain.order.Order;
 
 import javax.persistence.*;
 
 @Entity
-public class Delivery {
+public class Delivery extends BaseEntity {
 
     @Id @GeneratedValue
     private Long id;

@@ -1,5 +1,6 @@
 package jpabasic.springjpa.shop.domain.order;
 
+import jpabasic.springjpa.shop.domain.BaseEntity;
 import jpabasic.springjpa.shop.domain.delivery.Delivery;
 import jpabasic.springjpa.shop.domain.member.Member;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Order {
+public class Order extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")

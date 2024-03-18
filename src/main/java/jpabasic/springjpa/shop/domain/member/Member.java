@@ -1,5 +1,6 @@
 package jpabasic.springjpa.shop.domain.member;
 
+import jpabasic.springjpa.shop.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
-public class Member {
+public class Member extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")

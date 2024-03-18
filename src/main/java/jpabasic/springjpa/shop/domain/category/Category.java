@@ -1,5 +1,6 @@
 package jpabasic.springjpa.shop.domain.category;
 
+import jpabasic.springjpa.shop.domain.BaseEntity;
 import jpabasic.springjpa.shop.domain.item.Item;
 
 import javax.persistence.*;
@@ -7,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
+public class Category extends BaseEntity {
 
+    @Id @GeneratedValue
     private Long id;
 
     private String name;

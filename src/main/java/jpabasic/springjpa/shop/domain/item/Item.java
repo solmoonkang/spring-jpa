@@ -1,5 +1,6 @@
 package jpabasic.springjpa.shop.domain.item;
 
+import jpabasic.springjpa.shop.domain.BaseEntity;
 import jpabasic.springjpa.shop.domain.category.Category;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
-public class Item {
+public class Item extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
