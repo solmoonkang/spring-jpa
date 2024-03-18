@@ -1,4 +1,6 @@
-package jpabasic.springjpa.shop.domain;
+package jpabasic.springjpa.shop.domain.delivery;
+
+import jpabasic.springjpa.shop.domain.order.Order;
 
 import javax.persistence.*;
 
