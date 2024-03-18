@@ -1,11 +1,17 @@
-package jpabasic.springjpa.shop.domain;
+package jpabasic.springjpa.shop.domain.item;
+
+import jpabasic.springjpa.shop.domain.category.Category;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "ORDERS")
+@Getter @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
 public class Item {
 
     @Id @GeneratedValue
