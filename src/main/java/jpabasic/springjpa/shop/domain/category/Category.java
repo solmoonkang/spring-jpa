@@ -1,4 +1,6 @@
-package jpabasic.springjpa.shop.domain;
+package jpabasic.springjpa.shop.domain.category;
+
+import jpabasic.springjpa.shop.domain.item.Item;
 
 import javax.persistence.*;
 import java.util.ArrayList;
