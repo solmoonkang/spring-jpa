@@ -20,18 +20,40 @@ public class JpaMain {
             member.setAge(20);
             entityManager.persist(member);
 
+
+
+            // TypeQuery, Query
             TypedQuery<Member> typedQueryA = entityManager.createQuery("SELECT m FROM Member m", Member.class);
             Query query = entityManager.createQuery("SELECT m.username, m.age FROM Member m");
 
-            List<Member> resultList = typedQueryA.getResultList();
 
-            for (Member memberA : resultList) {
+
+            // 결과 조회 API
+            List<Member> resultListA = typedQueryA.getResultList();
+
+            for (Member memberA : resultListA) {
                 System.out.println("memberA = " + memberA);
             }
 
             TypedQuery<Member> typedQueryB = entityManager.createQuery("SELECT m FROM Member m WHERE m.age = 20", Member.class);
-            Member singleResult = typedQueryB.getSingleResult();
-            System.out.println("singleResult = " + singleResult);
+            Member singleResultB = typedQueryB.getSingleResult();
+            System.out.println("singleResult = " + singleResultB);
+
+
+
+
+            // 파라미터 바인딩
+            TypedQuery<Member> typedQueryC = entityManager.createQuery("SELECT m FROM Member m WHERE m.username = :username", Member.class);
+            typedQueryC.setParameter("username", "memberA");
+            Member singleResultC = typedQueryC.getSingleResult();
+            System.out.println("singleResultC = " + singleResultC);
+
+            // 메서드 체이닝
+            Member singleResultD = entityManager.createQuery("SELECT m FROM Member m WHERE m.username = :username", Member.class)
+                    .setParameter("username", "memberA")
+                    .getSingleResult();
+            System.out.println("singleResultD = " + singleResultD);
+
 
 
             transaction.commit();
