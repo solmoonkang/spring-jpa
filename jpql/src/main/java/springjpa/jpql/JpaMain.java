@@ -56,6 +56,15 @@ public class JpaMain {
 
 
 
+
+            // 프로젝션
+            List<Member> membersA = entityManager.createQuery("SELECT m FROM Member m", Member.class)
+                            .getResultList();
+
+            Member findMemberA = membersA.get(0);
+            findMemberA.setAge(26);
+
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
