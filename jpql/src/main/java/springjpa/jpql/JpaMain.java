@@ -73,6 +73,20 @@ public class JpaMain {
             System.out.println("memberDTO.getAge() = " + memberDTO.getAge());
 
 
+
+            // PAGING QUERY
+            String jpql = "SELECT m FROM Member m ORDER BY m.age desc";
+            List<Member> membersB = entityManager.createQuery(jpql, Member.class)
+                    .setFirstResult(10)
+                    .setMaxResults(20)
+                    .getResultList();
+
+            System.out.println("membersB.size() = " + membersB.size());
+            for (Member memberA : membersB) {
+                System.out.println("memberA = " + memberA);
+            }
+
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
