@@ -1,16 +1,16 @@
 package springjpa.shop.domain.order;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.BaseEntity;
 import springjpa.shop.domain.delivery.Delivery;
 import springjpa.shop.domain.member.Member;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.CascadeType.*;
-import static javax.persistence.FetchType.*;
+import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 public class Order extends BaseEntity {

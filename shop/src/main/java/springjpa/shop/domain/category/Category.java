@@ -1,18 +1,19 @@
 package springjpa.shop.domain.category;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.BaseEntity;
 import springjpa.shop.domain.item.Item;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.FetchType.LAZY;
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 public class Category extends BaseEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String name;

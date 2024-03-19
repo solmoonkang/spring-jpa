@@ -1,12 +1,12 @@
 package springjpa.shop.domain.order;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import static jakarta.persistence.FetchType.LAZY;
 
-import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter @Setter

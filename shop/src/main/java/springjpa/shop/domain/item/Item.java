@@ -1,11 +1,11 @@
 package springjpa.shop.domain.item;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.BaseEntity;
 import springjpa.shop.domain.category.Category;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

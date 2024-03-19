@@ -1,12 +1,11 @@
 package springjpa.shop.domain.delivery;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.Address;
 import springjpa.shop.domain.BaseEntity;
 import springjpa.shop.domain.order.Order;
 
-import javax.persistence.*;
-
-import static javax.persistence.FetchType.LAZY;
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 public class Delivery extends BaseEntity {

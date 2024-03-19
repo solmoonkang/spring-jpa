@@ -1,11 +1,11 @@
 package springjpa.shop.domain.member;
 
+import jakarta.persistence.*;
 import springjpa.shop.domain.Address;
 import springjpa.shop.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 
 @Entity
 @Getter @Setter
