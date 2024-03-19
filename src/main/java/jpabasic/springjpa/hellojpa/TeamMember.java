@@ -50,10 +50,11 @@ public class TeamMember extends BaseEntity {
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFood = new HashSet<>();
 
-    @ElementCollection
-    @CollectionTable(
-            name = "ADDRESS",
-            joinColumns = @JoinColumn(name = "MEMBER_ID")
-    )
-    private List<Address> addressHistory = new ArrayList<>();
+    // @ElementCollection
+    // @CollectionTable(name = "ADDRESS", joinColumns = @JoinColumn(name = "MEMBER_ID"))
+    // private List<Address> addressHistory = new ArrayList<>();       // 해당 값 타입 컬렉션은 사용 X
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "MEMBER_ID")
+    private List<AddressEntity> addressHistory = new ArrayList<>();
 }
