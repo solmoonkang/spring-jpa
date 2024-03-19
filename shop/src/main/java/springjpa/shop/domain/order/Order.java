@@ -1,8 +1,8 @@
-package jpabasic.springjpa.shop.domain.order;
+package springjpa.shop.domain.order;
 
-import jpabasic.springjpa.shop.domain.BaseEntity;
-import jpabasic.springjpa.shop.domain.delivery.Delivery;
-import jpabasic.springjpa.shop.domain.member.Member;
+import springjpa.shop.domain.BaseEntity;
+import springjpa.shop.domain.delivery.Delivery;
+import springjpa.shop.domain.member.Member;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

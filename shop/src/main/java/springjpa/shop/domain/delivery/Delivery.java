@@ -1,8 +1,8 @@
-package jpabasic.springjpa.shop.domain.delivery;
+package springjpa.shop.domain.delivery;
 
-import jpabasic.springjpa.shop.domain.Address;
-import jpabasic.springjpa.shop.domain.BaseEntity;
-import jpabasic.springjpa.shop.domain.order.Order;
+import springjpa.shop.domain.Address;
+import springjpa.shop.domain.BaseEntity;
+import springjpa.shop.domain.order.Order;
 
 import javax.persistence.*;
 

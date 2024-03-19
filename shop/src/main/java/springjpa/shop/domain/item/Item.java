@@ -1,7 +1,7 @@
-package jpabasic.springjpa.shop.domain.item;
+package springjpa.shop.domain.item;
 
-import jpabasic.springjpa.shop.domain.BaseEntity;
-import jpabasic.springjpa.shop.domain.category.Category;
+import springjpa.shop.domain.BaseEntity;
+import springjpa.shop.domain.category.Category;
 import lombok.Getter;
 import lombok.Setter;
 

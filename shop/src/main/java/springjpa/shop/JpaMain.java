@@ -1,13 +1,13 @@
-package jpabasic.springjpa.shop;
+package springjpa.shop;
 
-import jpabasic.springjpa.shop.domain.item.Book;
+import springjpa.shop.domain.item.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class ShopApplication {
+public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("springjpa");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

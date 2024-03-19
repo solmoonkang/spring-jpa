@@ -1,4 +1,4 @@
-package jpabasic.springjpa.shop.domain;
+package springjpa.shop.domain;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
-package jpabasic.springjpa.shop.domain.order;
+package springjpa.shop.domain.order;
 
-import jpabasic.springjpa.shop.domain.item.Item;
+import springjpa.shop.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
