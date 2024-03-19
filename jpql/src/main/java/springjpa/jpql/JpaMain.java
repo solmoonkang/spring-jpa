@@ -58,7 +58,7 @@ public class JpaMain {
 
 
             // 프로젝션
-            List<Member> membersA = entityManager.createQuery("SELECT m FROM Member m", Member.class)
+            List<Member> membersA = entityManager.createQuery("SELECT t FROM Member m JOIN m.team t", Member.class)
                             .getResultList();
 
             Member findMemberA = membersA.get(0);
