@@ -64,6 +64,14 @@ public class JpaMain {
             Member findMemberA = membersA.get(0);
             findMemberA.setAge(26);
 
+            // 프로젝션: new 생성자를 사용
+            List<MemberDTO> memberDTOS = entityManager.createQuery("SELECT new springjpa.jpql.MemberDTO(m.username, m.age) FROM Member m", MemberDTO.class)
+                    .getResultList();
+
+            MemberDTO memberDTO = memberDTOS.get(0);
+            System.out.println("memberDTO.getUsername() = " + memberDTO.getUsername());
+            System.out.println("memberDTO.getAge() = " + memberDTO.getAge());
+
 
             transaction.commit();
         } catch (Exception e) {
