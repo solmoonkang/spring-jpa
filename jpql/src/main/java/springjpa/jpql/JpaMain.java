@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import springjpa.jpql.domain.Member;
 import springjpa.jpql.domain.Team;
 
-import java.util.Collection;
 import java.util.List;
 
 public class JpaMain {
@@ -92,7 +91,7 @@ public class JpaMain {
 
 
 
-            // FETCH JOIN
+            // FETCH JOIN: @ManyToOne
             Team team1 = new Team();
             team1.setName("team1");
             entityManager.persist(team1);
@@ -118,12 +117,12 @@ public class JpaMain {
 
             entityManager.flush();
 
-            String fetchJoinJpql = "SELECT m FROM Member m JOIN FETCH m.team";
+            String manyToOneFetchJoinJpql = "SELECT m FROM Member m JOIN FETCH m.team";
 
-            List<Member> members = entityManager.createQuery(fetchJoinJpql, Member.class)
+            List<Member> members1 = entityManager.createQuery(manyToOneFetchJoinJpql, Member.class)
                             .getResultList();
 
-            for (Member member4 : members) {
+            for (Member member4 : members1) {
                 System.out.println("username() = " + member4.getUsername() + ", " +
                                     "teamName = " + member4.getTeam().getName());
 
@@ -135,6 +134,19 @@ public class JpaMain {
             }
 
 
+            // FETCH JOIN: Collection, OneToMany
+            String collectionFetchJoinJpql = "SELECT DISTINCT t FROM Team t JOIN FETCH t.members WHERE t.name='team1'";
+
+            List<Team> teams1 = entityManager.createQuery(collectionFetchJoinJpql, Team.class)
+                    .getResultList();
+
+            for(Team team : teams1) {
+                System.out.println("teamName = " + team.getName() + ", team = " + team);
+                for (Member member5 : team.getMembers()) {
+                    // 페치 조인으로 팀과 회원을 함께 조회해서 지연 로딩 발생 안함
+                    System.out.println("-> username = " + member5.getUsername()+ ", member = " + member5);
+                }
+            }
 
             transaction.commit();
         } catch (Exception e) {
