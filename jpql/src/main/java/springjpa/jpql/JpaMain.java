@@ -167,6 +167,15 @@ public class JpaMain {
                     .setParameter("memberId", member.getId())
                     .getResultList();
 
+
+
+
+
+            // NAMED QUERY
+            List<Member> namedQuery = entityManager.createNamedQuery("Member.findByUsername", Member.class)
+                    .setParameter("username", "member1")
+                    .getResultList();
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
