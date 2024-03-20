@@ -148,6 +148,25 @@ public class JpaMain {
                 }
             }
 
+
+
+
+
+
+            // 엔티티 직접 사용: 엔티티를 파라미터로 전달
+            String entityParamJpql = "SELECT m FROM Member m WHERE m = :member";
+
+            List resultList1 = entityManager.createQuery(entityParamJpql, Member.class)
+                    .setParameter("member", member)
+                    .getResultList();
+
+            // 엔티티 직접 사용: 식별자를 직접 전달
+            String identityParamJpql = "SELECT m FROM Member m WHERE m.id = :memberId";
+
+            List resultList2 = entityManager.createQuery(identityParamJpql, Member.class)
+                    .setParameter("memberId", member.getId())
+                    .getResultList();
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
