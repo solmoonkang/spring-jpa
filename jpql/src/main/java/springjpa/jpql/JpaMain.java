@@ -176,6 +176,18 @@ public class JpaMain {
                     .setParameter("username", "member1")
                     .getResultList();
 
+
+
+
+
+            // 벌크 연산: 모든 회원의 나이를 20살로 변경
+            int resultCount = entityManager.createQuery("UPDATE Member m SET m.age = 20")
+                    .executeUpdate();
+
+            System.out.println("resultCount = " + resultCount);
+
+
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
