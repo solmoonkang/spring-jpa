@@ -2,7 +2,9 @@ package springjpa.jpql;
 
 import jakarta.persistence.*;
 import springjpa.jpql.domain.Member;
+import springjpa.jpql.domain.Team;
 
+import java.util.Collection;
 import java.util.List;
 
 public class JpaMain {
@@ -85,6 +87,53 @@ public class JpaMain {
             for (Member memberA : membersB) {
                 System.out.println("memberA = " + memberA);
             }
+
+
+
+
+
+            // FETCH JOIN
+            Team team1 = new Team();
+            team1.setName("team1");
+            entityManager.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName("team2");
+            entityManager.persist(team2);
+
+            Member member1 = new Member();
+            member1.setUsername("member1");
+            member1.setTeam(team1);
+            entityManager.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            member2.setTeam(team1);
+            entityManager.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername("member3");
+            member3.setTeam(team2);
+            entityManager.persist(member3);
+
+            entityManager.flush();
+
+            String fetchJoinJpql = "SELECT m FROM Member m JOIN FETCH m.team";
+
+            List<Member> members = entityManager.createQuery(fetchJoinJpql, Member.class)
+                            .getResultList();
+
+            for (Member member4 : members) {
+                System.out.println("username() = " + member4.getUsername() + ", " +
+                                    "teamName = " + member4.getTeam().getName());
+
+                // 회원1, 팀1(SQL)
+                // 회원2, 팀1(1차 캐시)
+                // 회원3, 팀2(SQL)
+
+                // 회원 100명 -> N + 1: N명의 회원들과 해당 회원을 조회하기 위해 처음 날린 쿼리 1을 N + 1이라고 한다.
+            }
+
 
 
             transaction.commit();
